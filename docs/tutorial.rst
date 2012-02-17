@@ -75,3 +75,16 @@ Nested resources are also easy and works just how a single level resource works:
 
     >>> ## GET /resource1/1/resource2/
     >>> api.resource1(1).resource2.get()
+
+Base API Introspection
+======================
+
+You can also retrieve data provided by the base URL of the API if it
+supports it, using ``api.get()``. For example, an API made with
+`django-tastypie`_ will list each resource with schema and endpoints
+URLS::
+
+    >>> ## GET /
+    >>> api.get()
+    {'resource': {'list_endpoint': '/api/v1/resource/', 'schema': '/api/v1/resource/schema/'}}
+
