@@ -170,3 +170,11 @@ class API(ResourceAttributesMixin, object):
         # Do some Checks for Required Values
         if self._store.get("base_url") is None:
             raise exceptions.ImproperlyConfigured("base_url is required")
+
+    def get(self, **kwargs):
+        """
+        Allow the base of the API to be introspected. Eg with
+        a tastypie API, a dictionary of resources mapped to
+        schemas/endpoints will be returned.
+        """
+        return self.__getattr__("").get(**kwargs)
